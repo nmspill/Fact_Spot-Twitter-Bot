@@ -35,7 +35,6 @@ def tweet_fact(text_file):
             time.sleep(60*60)
 
 
-
 def unfollow():
     for following in tweepy.Cursor(api.friends).items():
         api.destroy_friendship(following.screen_name)
