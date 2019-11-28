@@ -29,18 +29,16 @@ def tweet_fact(text_file):
     for follower in tweepy.Cursor(api.followers, screen_name=user_name).items():
         try:
             api.create_friendship(follower.screen_name)
+            time.sleep(5)
         except tweepy.TweepError as e:
             print("Sleeping: ", e)
             time.sleep(60*60)
 
-        print(follower.screen_name)
-        time.sleep(5)
 
 
 def unfollow():
     for following in tweepy.Cursor(api.friends).items():
         api.destroy_friendship(following.screen_name)
-        print(following.screen_name)
         time.sleep(1)
 
         
